@@ -16,7 +16,7 @@ const MainSection = () => {
                 {/* <div className="ms-m-description">
                     <h2>Description</h2>
                 </div> */}
-                <button className="button" id="shop-now" onClick={() => navigate('/product1')}>Items</button>
+                <button className="button" id="shop-now" onClick={() => navigate('/product:id')}>Items</button>
             </div>
         </div>
     )
