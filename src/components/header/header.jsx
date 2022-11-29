@@ -1,0 +1,25 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './header.styles.scss';
+import Cart from '../cart/cart';
+
+const Header = () => {
+    return (
+        <nav className="nav-menu container">
+            <div className="logo">
+                <Link to="/">Stripe App</Link>
+            </div>
+            <ul>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/shop">Shop</Link>
+                </li>
+            </ul>
+            <Cart />
+        </nav>
+    );
+}
+
+export default Header;

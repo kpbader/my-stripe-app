@@ -6,6 +6,10 @@
 @import "../node_modules/bulma/sass/elements/container.sass";
 @import "../node_modules/bulma/sass/layout/hero.sass";
 
+* {
+    font-family: "Copperplate"
+}
+
 .app {
   position: relative;
   min-height: 100vh;
@@ -24,6 +28,7 @@ img {
   font-weight: 600;
   &:hover {
     background-color: #606060;
+    transition: .3s;
   }
 }
 
@@ -64,7 +69,7 @@ img {
   }
 }
 
-// blacK button styles
+// button styles
 .nomad-btn {
   display: block;
   width: 100%;
