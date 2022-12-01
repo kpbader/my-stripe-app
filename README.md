@@ -4,7 +4,6 @@
 An app that focuses on utilizing Stripe for purchasing products
 
 ## Made with
-* JSX
 * SCSS
 * JavaScript
 * React.js 
