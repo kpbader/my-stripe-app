@@ -3,6 +3,7 @@ import { useStripe } from '@stripe/react-stripe-js';
 import { CartContext } from '../../../context/cart-context';
 import { fetchFromAPI } from '../../../helpers';
 
+
 const StripeCheckout = () => {
     const [email, setEmail] = useState('');
     const { cartItems } = useContext(CartContext);
@@ -19,20 +20,23 @@ const StripeCheckout = () => {
                     product_data: {
                         name: item.title,
                         description: item.description,
-                        images: [item.img]
+                        // images: [item.img]
                     }
                 }
             }
         });
 
-        const response =  await fetchFromAPI('create-checkout-session',{
-            body: {line_items, customer_email: email }
+        // makes call to backend 
+        const response = await fetchFromAPI('create-checkout-session',{
+            body: {line_items, customer_email: email}, 
+            method: 'POST', 
+            headers: {
+                "Content-Type": "application/json"
+            }
         }); 
 
         const { sessionId } = response; 
-        const { error } = await stripe.redirectToCheckout({
-            sessionId
-        });
+        const { error } = await stripe.redirectToCheckout({ sessionId });
 
         if (error) {
             console.log(error);
@@ -56,5 +60,6 @@ const StripeCheckout = () => {
 
     
 }
+
 
 export default StripeCheckout;
