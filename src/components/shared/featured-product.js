@@ -17,6 +17,7 @@ const FeaturedProduct = (props) => {
             </div>
             <div className="name-price">
                 <h3>{title}</h3>
+                <p>{description}</p>
                 <p>$ {price}</p>
                 {
                     !itemInCart && 

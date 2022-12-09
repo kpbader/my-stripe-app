@@ -2,7 +2,7 @@
     display: flex; 
     align-items: center;
     padding: 1rem;
-
+    
 
 a {
     text-decoration: none;
@@ -19,8 +19,7 @@ a {
 
 ul {
     list-style-type: none;
-    margin: 0;
-    margin-left: auto;
+    margin: auto;
 }
 
 li { 
@@ -29,4 +28,12 @@ li {
     cursor: pointer;
 }
 
+}
+
+/* Extra small devices */
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+    .nav-menu a {
+        font-size: 18px;
+        // padding: 10px;
+    }
 }

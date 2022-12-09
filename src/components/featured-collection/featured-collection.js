@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { ProductsContext } from '../../context/products-context';
 import FeaturedProduct from '../shared/featured-product';
+import './featured-collection.styles.scss';
 
 const FeaturedCollection = () => {
     const { products } = useContext(ProductsContext);
-    const productItems = products.filter((product, i) => i < 5).map(product => (
+    const productItems = products.filter((product, i) => i < 3).map(product => (
         <FeaturedProduct {...product} key={product.id} />
     ));
 

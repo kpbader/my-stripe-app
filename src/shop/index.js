@@ -8,35 +8,35 @@ const SHOP_DATA = [
     {
         id: 1,
         title: 'Bullies',
-        description: 'artwork',
+        description: '10" x 30" Image transfer on paper',
         img: Bullies,
         price: 500
     },
     {
         id: 2,
         title: 'Polo Game',
-        description: 'artwork',
+        description: '6" x 12" Print',
         img: Polo,
         price: 500
     },
     {
         id: 3,
         title: 'Billards',
-        description: 'artwork',
+        description: '6" x 12" Print',
         img: ews,
         price: 500
     },
     {
         id: 4,
         title: 'Dance and Crumble',
-        description: 'artwork',
+        description: '8" x 12" Print',
         img: bwParty,
         price: 500
     },
     {
         id: 5,
         title: 'Play that tune',
-        description: 'artwork',
+        description: '6" x 12" Print',
         img: stlPiano,
         price: 500
     },
