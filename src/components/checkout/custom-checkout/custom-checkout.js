@@ -51,7 +51,7 @@ const CustomCheckout = ({ shipping, cartItems }) => {
               body
             });
     
-            setClienSecret(clientSecret)
+            setClientSecret(clientSecret)
             setPaymentIntentId(id);
           }
     
