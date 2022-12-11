@@ -9,7 +9,7 @@ const CustomCheckout = ({ shipping, cartItems }) => {
     const [error, setError] = useState(null);
     const [clientSecret, setClientSecret] = useState(null);
     const [cards, setCards] = useState(null);
-    const [payment, setPaymentCard] = useState();
+    const [payment, setPaymentCard] = useState('');
     const [saveCard, setSavedCard] = useState(false);
     const [paymentIntentId, setPaymentIntentId] = useState(null);
     const stripe = useStripe();
@@ -58,7 +58,7 @@ const CustomCheckout = ({ shipping, cartItems }) => {
 
             customCheckout();
         }
-    }, [shipping, cartItems]);
+    }, [shipping, cartItems, user]);
 
     const handleCheckout = async () => {
         setProcessing(true);

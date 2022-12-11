@@ -5,7 +5,7 @@ export const isInCart = (product, cartItems) => {
 }
 
 // when app is deployed, this will be the final url we deploy the server to 
-const API = 'https://my-stripe-app-1.herokuapp.com/';
+const API = 'https://my-stripe-app-1.herokuapp.com';
 
 export async function fetchFromAPI(endpoint, opts) {
     const { method, body } = { method: 'POST', body: null, ...opts };
