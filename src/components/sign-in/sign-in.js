@@ -5,21 +5,31 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase/index';
 import '../sign-up/sign-up.styles.scss';
 
+// validation  
+const validate = values => {
+    const errors = {};
+    if (!values.email) {
+        errors.email = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+        errors.email = 'Invalid email address';
+    } return errors;
+}
+
 const SignIn = () => {
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
+
     const initialValues = {
         email: '',
         password: ''
     };
 
-    const [error, setError] = useState(null);
-    const nav = useNavigate();
-
-    const handleSignIn = async (values, { setSubmitting }) => {
+    const handleSubmit = async (values, { setSubmitting }) => {
         const { email, password } = values;
         try {
             await auth.signInWithEmailAndPassword(email, password);
             setSubmitting(false);
-            nav('/shop');
+            navigate('/shop');
         } catch (error) {
             console.log(error);
             setSubmitting(false);
@@ -33,11 +43,16 @@ const SignIn = () => {
             <div className="form-container">
                 <Formik
                     initialValues={initialValues}
-                    onSubmit={handleSignIn}
-                >
-                    {
-                        (values, errors, handleChange, handleSubmit, isSubmitting) => {
-                            
+                    validate={validate}
+                    onSubmit={handleSubmit}>
+                    {({
+                        values,
+                        errors,
+                        handleChange,
+                        handleSubmit,
+                        isSubmitting
+                    }) => {
+                            // const { email } = errors; 
                             return (
                                 <form onSubmit={handleSubmit}>
                                     <div>
