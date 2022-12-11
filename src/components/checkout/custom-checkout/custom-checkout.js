@@ -18,47 +18,46 @@ const CustomCheckout = ({ shipping, cartItems }) => {
     const { user } = useContext(UserContext)
 
     useEffect(() => {
-        const items = cartItems.map(item => ({ price: item.price, quantity: item.quantity }));
+        const items = cartItems.map(item => ({price: item.price, quantity: item.quantity}));
         if (user) {
-            const savedCards = async () => {
-                try {
-                    const cardsList = await fetchFromAPI('get-payment-methods', {
-                        method: 'GET'
-                    });
-                    setCards(cardsList);
-                } catch (error) {
-                    console.log(error);
-                }
+          const savedCards = async () => {
+            try {
+              const cardsList = await fetchFromAPI('get-payment-methods', {
+                method: 'GET',
+              }); 
+              setCards(cardsList);
+            } catch(error) {
+              console.log(error);
             }
-
-            savedCards();
+          }
+          savedCards();
         }
-
+    
         if (shipping) {
-            const body = {
-                cartItems: items,
-                shipping: {
-                    name: shipping.name,
-                    address: {
-                        line1: shipping.address
-                    }
-                },
-                description: 'payment intent for shop',
-                receipt_email: shipping.email,
-            }
-
-            const customCheckout = async () => {
-                const { clientSecret, id } = await fetchFromAPI('create-payment-intent', {
-                    body
-                });
-
-                setClientSecret(clientSecret);
-                setPaymentIntentId(id);
-            }
-
-            customCheckout();
+          const body = {
+            cartItems: items,
+            shipping: {
+              name: shipping.name,
+              address: {
+                line1: shipping.address
+              }
+            },
+            description: 'payment intent for shop',
+            receipt_email: shipping.email,
+          }
+    
+          const customCheckout = async () => {
+            const { clientSecret, id } = await fetchFromAPI('create-payment-intent', {
+              body
+            });
+    
+            setClienSecret(clientSecret)
+            setPaymentIntentId(id);
+          }
+    
+          customCheckout();
         }
-    }, [shipping, cartItems, user]);
+      }, [shipping, cartItems, user]);
 
     const handleCheckout = async () => {
         setProcessing(true);
