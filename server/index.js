@@ -23,6 +23,7 @@ app.get('/', (req, res) => res.send('Hello World!'));
 app.get('/get-payment-methods', validateUser, getCards);
 
 app.post('/create-checkout-session', createCheckoutSession);
+
 app.post('/webhook', webhook);
 app.post('/create-payment-intent', paymentIntent);
 app.post('/save-payment-method', validateUser, setupIntent);
