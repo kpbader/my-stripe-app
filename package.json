@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node my-stripe-app-server/index.js",
     "dev": "concurrently \"cd my-stripe-app-server && npm start\" \"cd frontend && npm start\"",
-    "install": " cd my-stripe-app-server && npm i && cd ../frontend && npm i"
+    "install": "cd my-stripe-app-server && npm i && cd ../frontend && npm i",
+    "build": "cd frontend && npm run build"
   },
   "devDependencies": {
     "concurrently": "^5.1.0"
