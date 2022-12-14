@@ -7,7 +7,7 @@ import { UserContext } from '../../../context/user-context';
 const CustomCheckout = ({ shipping, cartItems }) => {
     const [processing, setProcessing] = useState(false);
     const [error, setError] = useState(null);
-    const [clientSecret, setClientSecret] = useState();
+    const [clientSecret, setClientSecret] = useState(null);
     const [cards, setCards] = useState(null);
     const [payment, setPaymentCard] = useState('');
     const [saveCard, setSavedCard] = useState(false);
