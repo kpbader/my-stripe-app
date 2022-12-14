@@ -19,10 +19,7 @@ app.use(express.json({
 app.use(cors({ origin: true }));
 app.use(decodeJWT);
 
-app.use(function(req, res) {
-    res.redirect('/');
-});
-
+// app.get('/', (req, res) => res.send('Hello World!'));
 app.get('/get-payment-methods', validateUser, getCards);
 
 app.post('/create-checkout-session', createCheckoutSession);
