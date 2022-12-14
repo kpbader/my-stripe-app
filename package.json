@@ -2,11 +2,11 @@
   "name": "my-stripe-app",
   "version": "1.0.0",
   "description": "",
-  "main": "my-stripe-app-server/index.js",
+  "main": "server/index.js",
   "scripts": {
-    "start": "node my-stripe-app-server/index.js",
-    "dev": "concurrently \"cd my-stripe-app-server && npm start\" \"cd frontend && npm start\"",
-    "install": "cd my-stripe-app-server && npm i && cd ../frontend && npm i",
+    "start": "node server/index.js",
+    "dev": "concurrently \"cd server && npm start\" \"cd frontend && npm start\"",
+    "install": "cd server && npm i && cd ../frontend && npm i",
     "build": "cd frontend && npm run build"
   },
   "devDependencies": {
