@@ -9,6 +9,7 @@ const setupIntent = require('./api/setupIntent');
 const validateUser = require('./auth/validateUser');
 const getCards = require('./api/getPaymentMethod');
 const updatePaymentIntent = require('./api/updatePaymentIntent');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 8080
@@ -16,10 +17,18 @@ const PORT = process.env.PORT || 8080
 app.use(express.json({
     verify: (req, res, buffer) => req['rawBody'] = buffer,
 }));
+
 app.use(cors({ origin: true }));
 app.use(decodeJWT);
 
-app.get('/', (req, res) => res.send('Hello World!'));
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, '../frontend/build')))
+}
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/'))
+});
+
 app.get('/get-payment-methods', validateUser, getCards);
 
 app.post('/create-checkout-session', createCheckoutSession);
